@@ -229,29 +229,28 @@ if (container && window.THREE) {
     });
   });
 
-  // BOOKING FORM
-  const bookingForm = document.getElementById("booking-form");
+  // ===== WHATSAPP FORM =====
+const bookingForm = document.getElementById("booking-form");
 
-  if (bookingForm) {
-    bookingForm.addEventListener("submit", (event) => {
-      event.preventDefault();
+if (bookingForm) {
+  bookingForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-      const name = document.getElementById("customer-name").value;
-      const phone = document.getElementById("customer-phone").value;
-      const carName = document.getElementById("customer-car").value;
-      const message = document.getElementById("customer-message").value;
+    const name = document.getElementById("customer-name").value;
+    const phone = document.getElementById("customer-phone").value;
+    const car = document.getElementById("customer-car").value || "Not specified";
+    const message = document.getElementById("customer-message").value || "No message";
 
-      alert(
-        "Thank you " + name + "!\n\n" +
-        "Your inquiry has been received on this demo.\n" +
-        "Car: " + carName + "\n" +
-        "Phone: " + phone + "\n" +
-        "Message: " + message
-      );
+    const whatsappNumber = "8801XXXXXXXXX";   // ← এখানে তোমার নম্বর
 
-      bookingForm.reset();
-    });
-  }
+    const text = `New Inquiry from Auto Fair Website%0A%0AName: ${name}%0APhone: ${phone}%0ACar: ${car}%0AMessage: ${message}`;
+
+    const whatsappURL = `https://wa.me/\( {whatsappNumber}?text= \){text}`;
+
+    window.open(whatsappURL, "_blank");
+    bookingForm.reset();
+  });
+}
 
   // ANIMATION
   function animate() {

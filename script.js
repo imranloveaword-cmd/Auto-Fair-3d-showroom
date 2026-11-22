@@ -277,3 +277,36 @@ if (container && window.THREE) {
   });
 
 }
+// ===== MOBILE MENU =====
+const menuToggle = document.getElementById("menu-toggle");
+const navMenu = document.getElementById("nav-menu");
+
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
+
+// ===== WHATSAPP FORM =====
+const bookingForm = document.getElementById("booking-form");
+
+if (bookingForm) {
+  bookingForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("customer-name").value;
+    const phone = document.getElementById("customer-phone").value;
+    const car = document.getElementById("customer-car").value || "Not specified";
+    const message = document.getElementById("customer-message").value || "No message";
+
+    // এখানে তোমার WhatsApp নম্বর দাও (দেশের কোড সহ)
+    const whatsappNumber = "+8801711447402";   // ← এখানে নিজের নম্বর বসাও
+
+    const text = `New Inquiry from Auto Fair Website%0A%0AName: ${name}%0APhone: ${phone}%0ACar: ${car}%0AMessage: ${message}`;
+
+    const whatsappURL = `https://wa.me/\( {whatsappNumber}?text= \){text}`;
+
+    window.open(whatsappURL, "_blank");
+    bookingForm.reset();
+  });
+}

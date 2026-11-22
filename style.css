@@ -478,3 +478,34 @@ footer p {
     font-size: 32px;
   }
 }
+/* ===== MOBILE MENU ===== */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: var(--gold);
+  cursor: pointer;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .navbar nav.active {
+    display: flex;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+}
